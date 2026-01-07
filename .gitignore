@@ -1,0 +1,48 @@
+# Django-specific
+*.pyc
+__pycache__/
+
+
+
+## Environment variables
+.env
+
+# .venv
+.venv
+
+# PyCharm-specific
+.idea/
+
+#vs-code
+.vscode
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+
+# node modules
+node_modules
+
+# Database
+*.sqlite3
+
+# Locust specific
+locustfile.py
+*.csv  # If Locust generates CSV reports
+locust.conf  # If you have a Locust configuration file
+test_settings.py
+
+# Uploaded files
+uploads/images/**
+uploads/marketplace/**
+
+# Development Requirements.txt
+requirements-dev.txt
+
+# Commands file
+.commands
+
+# Project Diagram
+my_project_models.png
+project_diagram.puml

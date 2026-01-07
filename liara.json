@@ -1,0 +1,18 @@
+{
+  "app": "feecoffee",
+  "port": 80,
+  "team-id": "67cd3eb2ec39e749a9b416c8",
+  "build": {
+    "location": "iran"
+  },
+  "disks": [
+    {
+      "name": "feecoffee-disk",
+      "mountTo": "/usr/src/app/uploads"
+    }
+  ],
+  "cron": [
+    "0 2 * * * cd $ROOT && python manage.py cron_commands"
+  ]
+}
+

@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head dir="rtl">
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="WebSite Template"/>
+    <meta name="description" content="FeeCoffee - Marketplace Website for Coffee industry">
+    <meta name="author" content="Saeed Pirani Heris">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+
+    <title>{% block title %}{% endblock %}</title>
+
+    {% include 'shared/header_references.html' %}
+</head>
+<body>
+
+<!--- Body --->
+
+
+<!--- loading --->
+{% block loading_page %}{% endblock %}
+
+<!--- header --->
+<div class="body">
+    <header id="header"
+        data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': false}">
+    <div class="header-body border-top-0 h-auto box-shadow-none">
+
+        <div class="header-container header-container-height-sm container-fluid px-lg-5 p-static">
+            <div class="header-row">
+                <div class="header-column">
+                    <div class="header-row">
+                        <div class="header-logo">
+                            <a href="#">
+                                <img alt="FeeCoffee" width="95" height="95"
+                                     src="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-column justify-content-end justify-content-lg-start w-100">
+                    <div class="header-row">
+                        <div class="header-nav header-nav-line header-nav-bottom-line header-nav-bottom-line-effect-1 justify-content-lg-start ps-lg-5">
+                            <div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-dropdown-border-radius header-nav-main-arrows header-nav-main-full-width-mega-menu header-nav-main-mega-menu-bg-hover header-nav-main-effect-2">
+                                <nav class="collapse" dir="rtl">
+                                    <ul class="nav nav-pills" id="mainNav">
+                                        <li>
+                                            <a href="{% url 'home_page' %}" class="nav-link {% if request.path == '/' %}active{% endif %}">
+                                                خانه
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link {% if request.path == '#services' %}active{% endif %}" href="{% url 'schema-swagger-ui' %}">
+                                                خدمات ما
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link {% if request.path == '#about' %}active{% endif %}" href="#about">
+                                                درباره ما
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link {% if request.path == '#education' %}active{% endif %}" href="#education">
+                                                آموزش
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="#">
+                                                مقالات
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link {% if request.path == '#contact_us' %}active{% endif %}" href="#contact_us">
+                                                تماس با ما
+                                            </a>
+                                        </li>
+                                        {% if request.user.is_authenticated %}
+                                            <li>
+                                                <a class="nav-link" href="{% url 'logout_token' %}">
+                                                    <img src="" alt="{{ user }}" width="50px">
+                                                    خروج
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li>
+                                                <a class="nav-link" href="{% url 'login_page' %}"><i
+                                                        class="fa fa-user"></i> ورود به حساب کاربری
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+
+                                </nav>
+
+                            </div>
+                            <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse"
+                                    data-bs-target=".header-nav-main nav">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </div>
+                        {#                            <div class="header-nav-features header-nav-features-no-border pe-3 order-1 order-lg-2">#}
+                        {#                                <div class="header-nav-feature header-nav-features-search d-inline-flex">#}
+                        {#                                    <a href="#" class="header-nav-features-toggle text-decoration-none"#}
+                        {#                                       data-focus="headerSearch" aria-label="Search"><i#}
+                        {#                                            class="fas fa-search header-nav-top-icon text-4"></i></a>#}
+                        {#                                    <div class="header-nav-features-dropdown" id="headerTopSearchDropdown">#}
+                        {#                                        <form role="search" action="page-search-results.html" method="get">#}
+                        {#                                            <div class="simple-search input-group">#}
+                        {#                                                <input class="form-control text-1" id="headerSearch" name="q"#}
+                        {#                                                       type="search" value="" placeholder="Search...">#}
+                        {#                                                <button class="btn" type="submit" aria-label="Search">#}
+                        {#                                                    <i class="fas fa-search header-nav-top-icon"></i>#}
+                        {#                                                </button>#}
+                        {#                                            </div>#}
+                        {#                                        </form>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+    {% block content %}{% endblock %}
+
+
+    <!--- footer --->
+    <footer id="footer" class="position-relative bg-transparent border-top-0">
+    <div class="container pt-3">
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-success d-none" id="newsletterSuccess">
+                    <strong>Success!</strong> You've been added to our email list.
+                </div>
+                <div class="alert alert-danger d-none" id="newsletterError"></div>
+                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
+                    <h4 class="custom-primary-font font-weight-semi-bold text-color-primary positive-ls-2 line-height-4 text-3 ws-nowrap pe-3 pt-0 text-md-4-5 mb-3 mb-lg-0">
+                        عضویت در خبرنامه:</h4>
+                    <form id="newsletterForm" class="form-style-3 w-100" action="php/newsletter-subscribe.php"
+                          method="POST">
+                        <div class="d-flex">
+                            <input class="form-control custom-form-control-newsletter-field box-shadow-none"
+                                   placeholder="آدرس ایمیل" name="newsletterEmail" id="newsletterEmail"
+                                   type="text"/>
+                            <button class="btn btn-primary custom-form-control-newsletter-btn btn-px-3 btn-py-2 font-weight-bold"
+                                    type="submit">
+                                <img width="6" height="18" src=""
+                                     alt="" data-icon
+                                     data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light'}"
+                                     style="width: 27px;"/>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row gy-5 pt-5 pb-4">
+            <div class="col">
+                <hr>
+            </div>
+        </div>
+        <div class="row pt-3 pb-4 gy-5">
+            <div class="col-lg-4">
+                <h4 class="custom-primary-font font-weight-semi-bold text-color-primary positive-ls-2 line-height-4 text-3 text-md-4-5 mb-4">
+                    اضافه کردن موارد
+                    </h4>
+{#                <ul class="list list-unstyled">#}
+{#                    <li><span class="text-color-grey text-color-hover-primary">Mon to Fri: 9:30 am — 7:00 pm</span>#}
+{#                    </li>#}
+{#                    <li><span class="text-color-grey text-color-hover-primary">Sat: 9:00 am — 2:00 pm</span></li>#}
+{#                    <li><span class="text-color-grey text-color-hover-primary">Sun: Closed</span></li>#}
+{#                </ul>#}
+            </div>
+            <div class="col-lg-5">
+                <h4 class="custom-primary-font font-weight-semi-bold text-color-primary positive-ls-2 line-height-4 text-3 text-md-4-5 mb-4">
+                    لینک های سایت</h4>
+                <ul class="list list-unstyled columns-lg-2">
+                    <li>
+                        <a href="demo-beauty-salon.html" class="text-color-grey text-color-hover-primary">
+                            خانه
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-color-grey text-color-hover-primary" href="{% url 'home_page' %}#about">
+                            درباره ما
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-color-grey text-color-hover-primary" href="demo-beauty-salon-services.html">
+                            خدمات ما
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-color-grey text-color-hover-primary" href="#">
+                            آموزش
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-color-grey text-color-hover-primary" href="#">
+                            مقالات
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-color-grey text-color-hover-primary" href="demo-beauty-salon-contact.html">
+                            تماس با ما
+                        </a>
+                    </li>
+{#                    <li>#}
+{#									<span class="anim-hover-scale-1-1 transition-3ms d-inline-block">#}
+{#										<a class="text-color-primary" href="demo-beauty-salon-book-now.html">#}
+{#											<strong>Book Now</strong>#}
+{#										</a>#}
+{#									</span>#}
+{#                    </li>#}
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <h4 class="custom-primary-font font-weight-semi-bold text-color-primary positive-ls-2 line-height-4 text-3 text-md-4-5 mb-4">
+                    شبکه های اجتماعی ما</h4>
+                <ul class="social-icons social-icons-clean social-icons-medium">
+                    <li class="social-icons-instagram">
+                        <a href="{{ site_setting.instagram_link }}" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li class="social-icons-linkedin">
+                        <a href="{{ site_setting.linkedin_link }}" target="_blank" title="linkedin">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                    <li class="social-icons-facebook">
+                        <a href="{{ site_setting.facebook_link }}" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row gy-5 pt-2 pb-4">
+            <div class="col">
+                <hr>
+            </div>
+        </div>
+        <div class="col mt-4 pb-5" style="text-align: center">
+{#            <div class="col-md-6 text-center">#}
+{#                <h4 class="custom-primary-font font-weight-semi-bold text-color-primary positive-ls-2 line-height-4 text-3 text-md-4-5 mb-2">#}
+{#                    آدرس ما</h4>#}
+{#                <p class="text-color-grey text-4 mb-0">#}
+{#                    999 Porto Theme Drive#}
+{#                </p>#}
+{#                <p class="text-color-grey text-4 mb-0">#}
+{#                    West Hollywood, CA 90069#}
+{#                </p>#}
+{#            </div>#}
+{#            <div class="col-md-6 text-center">#}
+                <h4 class="custom-primary-font font-weight-semi-bold text-color-primary positive-ls-2 line-height-4 text-3 text-md-4-5 mb-2">
+                    اطلاعات تماس</h4>
+                <p class="text-color-grey text-4 mb-0"> تلفن پشتیبانی: <a href="tel:09941350068" class="text-color-grey text-color-hover-primary">{{ site_setting.backup_phone }}</a>
+                </p>
+                <p class="text-color-grey text-4 mb-0"> ایمیل پشتیبانی: <a href="mailto:info@fee-coffee.com" class="text-color-grey text-color-hover-primary">{{ site_setting.email }}</a>
+                </p>
+{#            </div>#}
+        </div>
+    </div>
+    <div class="footer-copyright bg-transparent">
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col mt-4 pb-5">
+                    <p class="text-center text-3 text-color-grey mb-0">{{ site_setting.copy_right_text }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+
+{% include 'shared/footer_references.html' %}
+
+</body>
+</html>

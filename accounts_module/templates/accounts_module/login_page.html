@@ -1,0 +1,108 @@
+{% extends 'shared/_home_layout.html' %}
+
+
+{% block title %}
+    فی کافی | ورود
+{% endblock %}
+
+
+
+{% block content %}
+
+    <body class="bg-gray-100 text-gray-900">
+    <main>
+        <div
+                class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-color to-light-red">
+            <div
+                    class="bg-white shadow-lg overflow-hidden flex flex-col md:flex-row max-w-4xl w-full min-h-[500px] rounded-lg mx-2 justify-center md:justify-normal">
+                <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
+                    <h2 class="text-2xl font-bold text-primary-color mb-6">
+                        ورود به حساب کاربری
+                    </h2>
+                    <form method="post" action="{% url 'login_page' %}">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2"
+                            >شماره موبایل</label>
+                            <input
+                                    type="text"
+                                    class="w-full px-3 py-2 border rounded focus:outline-none focus:border-primary-color/50"
+                                    name="mobile"
+                                    id="mobile"
+                                    value="{{ mobile|default:'' }}"
+                                    placeholder="شماره موبایل"
+                                    required/>
+                            {% if login_form.mobile.errors %}
+                                <span class="text-red-600 text-sm border py-2 px-1 mt-2 block rounded border-red-600 text-center">
+                شماره موبایل وارد شده معتبر نیست
+              </span>
+                            {% endif %}
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2"
+                            >کلمه عبور</label>
+                            <input
+                                    type="password"
+                                    class="w-full px-3 py-2 border rounded focus:outline-none focus:border-primary-color/50"
+                                    name="password"
+                                    id="password"
+                                    value="{{ signup_form.password.value|default:'' }}"
+                                    placeholder="کلمه عبور"
+                                    required/>
+                        </div>
+                        <button
+                                class="w-full bg-primary-color text-white font-bold py-2 px-4 rounded hover:opacity-90">
+                            ورود
+                        </button>
+
+                        <!-- age error az samt server omad inja neshon bedid class block ro taghir bedid be hidden if bezarid age error bood hidden pak beshe block ezafe beshe  -->
+                        {% if login_form.errors %}
+                            <span
+                                    class="text-red-600 text-sm border py-2 px-1 mt-2 block rounded border-red-600 text-center">
+                {{ login_form.errors }}
+              </span>
+                        {% endif %}
+
+                        <!-- end error section -->
+
+                        <div class="mt-4 flex justify-between text-sm">
+                            <a
+                                    href="#"
+                                    class="text-primary-color hover:bg-primary-color hover:text-white border px-4 py-2 border-primary-color rounded transition-all duration-200">
+                                ایجاد حساب کاربری
+                            </a>
+                            <a
+                                    href="#"
+                                    class="text-primary-color hover:bg-primary-color hover:text-white border px-4 py-2 border-primary-color rounded transition-all duration-200">
+                                رمز خود را فراموش کرده‌اید؟
+                            </a>
+                        </div>
+                        <div class="mt-4 flex justify-between text-sm">
+                            <a
+                                    href="#"
+                                    class="text-primary-color hover:bg-primary-color hover:text-white border px-4 py-2 border-primary-color rounded transition-all duration-200"
+                            >
+                                ثبت نام کافه/فروشگاه
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="w-full md:w-1/2 hidden md:block">
+                    <!-- inja ye ax random neshon mide az ye api har axi khodetun doost darid jay gozin konid  -->
+                    <!-- ax tpye mobile hidden hast toye desktop ghabel didane -->
+{#                    <img#}
+{#                            src="https://picsum.photos/id/63/800/600"#}
+{#                            alt="Random"#}
+{#                            class="object-cover h-full w-full"#}
+{#                    />#}
+                    <!-- end image comment -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    </body>
+{% endblock %}
+
+
+
